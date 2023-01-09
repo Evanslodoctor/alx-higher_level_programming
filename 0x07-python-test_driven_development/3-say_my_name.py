@@ -1,11 +1,19 @@
 #!/usr/bin/python3
-""" This module provides a function that prints your name. """
+"""
+Module say_my_name
+Prints a given first name and last name.
+"""
 
 
 def say_my_name(first_name, last_name=""):
-    " Print the given name. "
+    """Prints a string with <first_name>
+    and <last_name>.
+    """
+
     if type(first_name) is not str:
         raise TypeError("first_name must be a string")
+
     if type(last_name) is not str:
         raise TypeError("last_name must be a string")
-    print(f"My name is {first_name} {last_name}")
+
+    print("My name is {} {}".format(first_name, last_name))
