@@ -1,17 +1,18 @@
 #!/usr/bin/python3
-"""Module name: 1-rectangle
+"""Module 1-rectangle
 Defines a Rectangle class.
 """
 
 
 class Rectangle:
-    """Rectangle class definition by width and height."""
+    """Rectangle class defined by width and height."""
 
     def __init__(self, width=0, height=0):
-        """Magic method initializes a Rectangle instance
-        with two attributes:
-            width - width of the rectangle
-            height - height of the rectangle
+        """Initializes a Rectangle instance.
+
+        Args:
+            width: width of the rectangle
+            height: height of the rectangle
         """
         self.width = width
         self.height = height
@@ -24,8 +25,8 @@ class Rectangle:
     @width.setter
     def width(self, value):
         """Sets the width of a Rectangle instance
+
         Args:
-            self: representation of the object
             value: value of the width, must be a positive integer
         """
         if not isinstance(value, int):
@@ -42,8 +43,8 @@ class Rectangle:
     @height.setter
     def height(self, value):
         """Sets the height of a Rectangle instance
+
         Args:
-            self: rep of the object
             value: value of the height, must be a positive integer
         """
         if not isinstance(value, int):
