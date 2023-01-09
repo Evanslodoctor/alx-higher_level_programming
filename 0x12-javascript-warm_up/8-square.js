@@ -1,13 +1,11 @@
 #!/usr/bin/node
-const op = process.argv[2];
-let sp = '';
-if (isNaN(op) === true) {
+if (process.argv[2] === undefined || isNaN(process.argv[2])) {
   console.log('Missing size');
 } else {
-  for (let i = 0; i < op; i++) {
-    sp += 'X';
-  }
-  for (let j = 0; j < op; j++) {
-    console.log(sp);
+  const x = Number(process.argv[2]);
+  let i = 0;
+  while (i < x) {
+    console.log('X'.repeat(x));
+    i++;
   }
 }
