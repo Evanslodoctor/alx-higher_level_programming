@@ -1,0 +1,46 @@
+Import the class:
+-----------------
+    >>> MyList = __import__("1-my_list").MyList
+
+Now test it:
+------------
+    >>> my_list = MyList()
+
+    >>> my_list
+    []
+
+    >>> my_list.append(2)
+
+    >>> my_list.append(3)
+
+    >>> my_list.append(1)
+
+    >>> my_list
+    [2, 3, 1]
+
+    >>> my_list.print_sorted()
+    [1, 2, 3]
+
+    >>> my_list
+    [2, 3, 1]
+
+    >>> my_list = MyList([5, 2, 3])
+
+    >>> my_list
+    [5, 2, 3]
+
+    >>> my_list.print_sorted()
+    [2, 3, 5]
+
+    >>> my_list = MyList("hola")
+
+    >>> my_list
+    ['h', 'o', 'l', 'a']
+
+    >>> my_list.print_sorted()
+    ['a', 'h', 'l', 'o']
+
+    >>> my_list = MyList()
+
+    >>> my_list.print_sorted()
+    []
