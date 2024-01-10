@@ -1,7 +1,3 @@
-#!/usr/bin/python3
-""" This module provides a function for matrix multiplication. """
-
-
 def matrix_mul(m_a, m_b):
     """ Return the product of m_a and m_b """
     if type(m_a) is not list:
@@ -9,49 +5,30 @@ def matrix_mul(m_a, m_b):
     if type(m_b) is not list:
         raise TypeError("m_b must be a list")
 
-    for x in m_a:
-        if type(x) is not list:
-            raise TypeError("m_a must be a list of lists")
-    for x in m_b:
-        if type(x) is not list:
-            raise TypeError("m_b must be a list of lists")
+    if not all(isinstance(row, list) for row in m_a):
+        raise TypeError("m_a must be a list of lists")
+    if not all(isinstance(row, list) for row in m_b):
+        raise TypeError("m_b must be a list of lists")
 
-    if m_a == [] or m_a == [[]]:
+    if not m_a or any(not row for row in m_a):
         raise ValueError("m_a can't be empty")
-    if m_b == [] or m_b == [[]]:
+    if not m_b or any(not row for row in m_b):
         raise ValueError("m_b can't be empty")
 
-    for row in m_a:
-        for x in row:
-            if type(x) is not int and type(x) is not float:
-                raise TypeError("m_a should contain only integers or floats")
-    for row in m_b:
-        for x in row:
-            if type(x) is not int and type(x) is not float:
-                raise TypeError("m_b should contain only integers or floats")
+    if any(not isinstance(x, (int, float)) for row in m_a for x in row):
+        raise TypeError("m_a should contain only integers or floats")
+    if any(not isinstance(x, (int, float)) for row in m_b for x in row):
+        raise TypeError("m_b should contain only integers or floats")
 
-    row_len = []
-    for row in m_a:
-        row_len.append(len(row))
-    if not all(elem == row_len[0] for elem in row_len):
+    if any(len(row) != len(m_a[0]) for row in m_a):
         raise TypeError("each row of m_a should be of the same size")
-    row_len = []
-    for row in m_b:
-        row_len.append(len(row))
-    if not all(elem == row_len[0] for elem in row_len):
+    if any(len(row) != len(m_b[0]) for row in m_b):
         raise TypeError("each row of m_b should be of the same size")
 
-    a_col = 0
-    for col in m_a[0]:
-        a_col += 1
-    b_row = 0
-    for row in m_b:
-        b_row += 1
-
-    if a_col != b_row:
+    if len(m_a[0]) != len(m_b):
         raise ValueError("m_a and m_b can't be multiplied")
 
-    result = [[0 for x in range(len(m_b[0]))] for y in range(len(m_a))]
+    result = [[0 for _ in range(len(m_b[0]))] for _ in range(len(m_a))]
 
     for i in range(len(m_a)):
         for j in range(len(m_b[0])):
