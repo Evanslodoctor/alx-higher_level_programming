@@ -1,8 +1,19 @@
+# analysis.py
 
-# 106-script.py
+def count_string_objects():
+    import gc
+    gc.collect()  # Ensure garbage collection is performed to get accurate count
 
-a = "SCHL"
-b = "SCHL"
-del a
-del b
-c = "SCHL"
+    # Count the number of string objects in the memory
+    count = sum(1 for obj in gc.get_objects() if isinstance(obj, str))
+    return count
+
+# Execute the script
+exec(open('106-script.py').read())
+
+# Analyze the results
+print("Number of string objects created by line 1:", count_string_objects())
+print("Number of string objects created by line 2:", count_string_objects())
+print("Is the string object pointed by 'a' deleted after line 3:", 'a' not in locals())
+print("Is the string object pointed by 'b' deleted after line 4:", 'b' not in locals())
+print("Number of string objects created by line 5:", count_string_objects())
