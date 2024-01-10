@@ -19,3 +19,18 @@ def print_square(size):
 
     for _ in range(size):
         print("#" * size)
+
+# Test cases
+print_square(4)
+print("")
+print_square(10)
+print("")
+print_square(0)
+print("")
+print_square(1)
+print("")
+
+try:
+    print_square(-1)
+except Exception as e:
+    print(e)
